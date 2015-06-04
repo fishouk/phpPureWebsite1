@@ -4,31 +4,32 @@
 		$name = trim($_POST["name"]);
 		$email = trim($_POST["email"]);
 		$message = trim($_POST["message"]);
-
+		
 		//Проверка заполненности полей
-		if ($name == "" OR $email == "" OR $message == "") {
-			$error_message = "Вы должны заполнить все поля формы!";
+		if ($name == "" || $email == "" || $message == "") {
+			$error_message[] = "Вы должны заполнить все поля формы!";
 			
 		}
 
 		//Реализация защиты от иньекций спам ботами для рассылки писем другим пользователям
 		foreach ($_POST as $value) {
 			if (stripos($value, 'Content-Type: ' !== false)) {
-				$error_message = "Некорректно введена информация.";				
+				$error_message[] = "Некорректно введена информация.";				
 			}
 		}
+		
 
 		//Защита от спама
 		if ($_POST['address'] != ""){
-			$error_message = "Ошибка при отправке формы!";
+			$error_message[] = "Ошибка при отправке формы!";
 		}
 
 		//подключение библиотеки phpMailler и валидация данных формы
 		require_once('inc/phpMailer/class.phpmailer.php');
 		$phpMailer = new PHPMailer();
 		if (!$phpMailer->ValidateAddress($email)){
-			$error_message = "Почта введена в неверном формате!";
-			}
+			$error_message[] = "Почта введена в неверном формате!";
+		}
 		
 		if(!isset($error_message)){
 			$emailBody = "" . "Имя: " . $name . "<br>"
@@ -45,7 +46,8 @@
 				header("Location: contact.php?message=thanks");
 				exit;
 		    } else {
-		    	$error_message = "Возникла проблема при отправке письма: " . $phpMailer->ErrorInfo;
+		    	$error_message = array();
+		    	$error_message[] = "Возникла проблема при отправке письма: " . $phpMailer->ErrorInfo;
 		    }			
 		}
 	}
@@ -60,32 +62,35 @@
 			
 			<?php
 			//Если получен соответсвующий Get запрос отобразит благодарность за письмо
-			 if (isset($_GET["message"]) AND $_GET["message"] == "thanks") { ?>	
+			 if (isset($_GET["message"]) && $_GET["message"] == "thanks") { ?>	
 				<h1>Спасибо за Ваше сообщение!</h1>	
 				<p>Мы обязательно с Вами свяжемся в ближайший день, в рабочее время.</p>
 			<?php } else { 
 				//Иначе отобразит форму обратной связи
 				?>			
-				<h1>Пишите - будем рады!</h1>
-				<p>Мы будем рады получить от Вас письмо. Пожалуйста заполните форму!</p>
+					<h1>Пишите - будем рады!</h1>
 				<?php 
-					if(isset($error_message)){
-						echo '<p class="message">' . $error_message . '</p>';
+					if(!isset($error_message)){
+						echo "<p>Мы будем рады получить от Вас письмо. Пожалуйста заполните форму!</p>";						
+					}else{
+						foreach ($error_message as $err_message) {
+							echo '<p class="message">' . $err_message . '</p>';
+						}
 					}
 				?>
 				<form method="post" action="contact.php">
 					<table>
 						<tr>
 							<th><label for="name">Ваше имя</label></th>
-							<td><input type="text" name="name" id="name"></td>
+							<td><input type="text" name="name" id="name" value="<?php if(isset($name)) {echo htmlspecialchars($name);} ?>"></td>
 						</tr>
 						<tr>
 							<th><label for="email">Ваш email</label></th>
-							<td><input type="text" name="email" id="email"></td>
+							<td><input type="text" name="email" id="email" value="<?php if(isset($email)) {echo htmlspecialchars($email);} ?>"></td>
 						</tr>
 						<tr>
 							<th><label for="message">Сообщение</label></th>
-							<td><textarea name="message" id="message"></textarea></td>
+							<td><textarea name="message" id="message"><?php if(isset($message)) {echo htmlspecialchars($message);} ?></textarea></td>
 						</tr>
 						<tr style="display:none;">
 							<th><label for="address">Ваш адрес</label></th>
