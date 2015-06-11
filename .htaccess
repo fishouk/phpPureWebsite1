@@ -1,2 +1,14 @@
 RewriteEngine On
 RewriteRule ^(\w+)$ $1.php [NC]
+
+RewriteRule ^reciept/index.php$ /reciept/ [R=301]
+RewriteRule ^contact/index.php$ /contact/ [R=301]
+RewriteRule ^info/index.php$ /info/ [R=301]
+RewriteRule ^shirts.php$ /shirts/ [R=301]
+RewriteRule ^contact/thanks/$ /contact/?message=thanks 
+
+RewriteRule ^shirts/$ shirts/shirts.php
+RewriteRule ^shirts/([0-9]+)/$ /shirts/shirt.php?id=$1
+RewriteCond %{QUERY_STRING} ^id=([0-9]+)$
+RewriteRule ^shirt.php$ /shirts/%1/? [R=301]
+RewriteRule ^(shirts/[0-9]+)$ /$1/ [R=301]

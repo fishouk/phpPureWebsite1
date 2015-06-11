@@ -1,30 +1,23 @@
 <?php 
-include('inc/products.php');
-/*Редирект на страницу с футболками при неправильном GET запросе*/
-if(isset($_GET["id"])){
-	$product_id = $_GET["id"];
-	if (isset($products[$product_id])) {	
-		$product = $products[$product_id];
-	} 
-}
+include('../inc/config.php');
 
-if(!isset($product)){
-	header("Location: /shirts.php");
-	exit;
-}
+include(ROOT_URL . 'inc/products.php');
+$products = getAllProducts();
+$productID = $_GET["id"];
+$product = getProduct($productID);
 
 $pageTitle = $product['name'];
 $sectionName = "shirts"; /*Для выделения ссылки в меню при открытии этой страницы*/
 
-include('inc/header.php');
+include(ROOT_URL . 'inc/header.php');
 ?>
 	<div class="section page">
 		<div class="wrapper">
-			<div class="breadcrumb"><a href="shirts.php">Футболки</a> &gt; <?php echo $product['name']; ?>		
+			<div class="breadcrumb"><a href="<?=BASE_URL;?>shirts/">Футболки</a> &gt; <?php echo $product['name']; ?>		
 			</div>
 			<div class="shirt-picture">
 				<span>
-					<img src="<?php echo $product['img']; ?>" alt="<?php echo $product['name']; ?>">
+					<img src="<?php echo BASE_URL . $product['img']; ?>" alt="<?php echo $product['name']; ?>">
 				</span>
 			</div>
 			<div class="shirt-details">
@@ -78,5 +71,5 @@ include('inc/header.php');
 			</div>
 		</div>
 	</div>
-<?php include('inc/footer.php');?>
+<?php include(ROOT_URL . 'inc/footer.php');?>
 

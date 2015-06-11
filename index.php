@@ -1,14 +1,18 @@
 <?php
+ include_once('/inc/config.php');
+
+include(ROOT_URL . 'inc/products.php');
+$rececntProducts = getRecentProducts();
  $pageTitle = "Интернет магазин футболок"; 	
- include('inc/header.php'); ?>
+ include(ROOT_URL . 'inc/header.php'); ?>
 
 		<div class="section banner">
 
 			<div class="wrapper">
 
-				<img class="hero" src="img/stewie.png" alt="Stewie says:">
+				<img class="hero" src="<?=BASE_URL;?>img/stewie.png" alt="Stewie says:">
 				<div class="button">
-					<a href="shirts.php">
+					<a href="<?=BASE_URL;?>shirts/">
 						<h2>А ты купил?</h2>
 						<p>Зацените наши прикольные футболки.</p>
 					</a>
@@ -22,21 +26,14 @@
 			<div class="wrapper">
 
 				<h2>Последние поступления</h2>
-				<?php include('inc/products.php'); ?>
 				<ul class="products">
-					<?php
+					<?php 
 					//Отображает список 4 последних продуктов слева направо. 
-						$total_products = count($products);
-						$position = 0;
-						$lastFourProductList ="";
-						foreach ($products as $product_id => $product) { 
-							$position++;
-						if($total_products - $position < 4){
-							$lastFourProductList = getViewProductList($product_id, $product)
-												. $lastFourProductList;							
+					$list_view_html = "";
+						foreach($rececntProducts as $product) { 
+							$listViewHtml = getViewProductList($product) . $listViewHtml;
 						}
-					} 
-						echo $lastFourProductList;
+						echo $listViewHtml;
 					?>								
 				</ul>
 
@@ -44,5 +41,5 @@
 
 		</div>
 
-<?php include('inc/footer.php');?>
+<?php include(ROOT_URL . 'inc/footer.php');?>
 	

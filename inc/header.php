@@ -10,10 +10,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="shortcut icon" href="<?=BASE_URL;?>favicon.ico">
 	
 	<!-- CSS Files -->	
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="<?=BASE_URL;?>css/main.css">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700" type="text/css">
 
 	<!-- Javascript Files -->
@@ -28,12 +28,12 @@
 
 		<div class="wrapper">
 
-			<h1 class="branding-title"><a href="./">Интеренет магазин футболок</a></h1>
+			<h1 class="branding-title"><a href="<?=BASE_URL;?>">Интеренет магазин футболок</a></h1>
 
 			<ul class="nav">
-				<li class="companyInfo <?php if($sectionName == "companyInfo"){echo 'on';}?>"><a href="../companyInfo.php">О компании</a></li>
-				<li class="shirts <?php if($sectionName == "shirts"){echo 'on';}?>"><a href="../shirts.php">Футболки</a></li>
-				<li class="contact <?php if($sectionName == "contact"){echo 'on';}?>"><a href="../contact.php">Написать нам</a></li>
+				<li class="companyInfo <?php if($sectionName == "companyInfo"){echo 'on';}?>"><a href="<?=BASE_URL;?>info/">О компании</a></li>
+				<li class="shirts <?php if($sectionName == "shirts"){echo 'on';}?>"><a href="<?=BASE_URL;?>shirts/">Футболки</a></li>
+				<li class="contact <?php if($sectionName == "contact"){echo 'on';}?>"><a href="<?=BASE_URL;?>contact/">Написать нам</a></li>
 				<li class="cart"><a target="paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_cart&amp;business=Y7NCZV89TFDQ6
 						&amp;display=1">Корзина</a></li>
 			</ul>
