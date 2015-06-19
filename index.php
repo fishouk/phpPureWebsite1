@@ -1,10 +1,10 @@
 <?php
- include_once('/inc/config.php');
+include_once('/inc/config.php');
 
 include(ROOT_URL . 'inc/products.php');
 $rececntProducts = getRecentProducts();
- $pageTitle = "Интернет магазин футболок"; 	
- include(ROOT_URL . 'inc/header.php'); ?>
+$pageTitle = "Интернет магазин футболок"; 	
+include(ROOT_URL . 'inc/header.php'); ?>
 
 		<div class="section banner">
 

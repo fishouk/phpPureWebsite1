@@ -2,10 +2,8 @@
 include('../inc/config.php');
 
 include(ROOT_URL . 'inc/products.php');
-$products = getAllProducts();
-$productID = $_GET["id"];
-$product = getProduct($productID);
 
+$product = getProduct($_GET["id"]);
 $pageTitle = $product['name'];
 $sectionName = "shirts"; /*Для выделения ссылки в меню при открытии этой страницы*/
 

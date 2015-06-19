@@ -1,7 +1,21 @@
 <?php
 	include('../inc/config.php');
-
 	include(ROOT_URL . 'inc/products.php');
+
+	if (empty($_GET["pg"])) {
+		$currentPage = 1;
+	} else {
+		$currentPage = $_GET["pg"];
+	}
+
+	$totalProducts = getProductsCount();	
+	$productsPerPage = 8;
+	$totalPages = ceil($totalProducts / $productsPerPage);
+	var_dump($totalPages);
+	if($currentPage > $totalPages){
+		header("Location: ./?pg=" . $totalPages);
+	}
+
 	$pageTitle = "Крутой каталог крутых футболок";
 	$sectionName = "shirts";/*Для выделения ссылки в меню при открытии этой страницы*/
 	include(ROOT_URL . 'inc/header.php');

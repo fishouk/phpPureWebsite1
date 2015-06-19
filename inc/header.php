@@ -34,6 +34,7 @@
 				<li class="companyInfo <?php if($sectionName == "companyInfo"){echo 'on';}?>"><a href="<?=BASE_URL;?>info/">О компании</a></li>
 				<li class="shirts <?php if($sectionName == "shirts"){echo 'on';}?>"><a href="<?=BASE_URL;?>shirts/">Футболки</a></li>
 				<li class="contact <?php if($sectionName == "contact"){echo 'on';}?>"><a href="<?=BASE_URL;?>contact/">Написать нам</a></li>
+				<li class="search <?php if($sectionName == "search"){echo 'on';}?>"><a href="<?=BASE_URL;?>search/">Поиск</a></li>
 				<li class="cart"><a target="paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_cart&amp;business=Y7NCZV89TFDQ6
 						&amp;display=1">Корзина</a></li>
 			</ul>
