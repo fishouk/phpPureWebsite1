@@ -13,7 +13,7 @@
 			<?php
 			//Если получен соответсвующий Get запрос форма регистрации
 			 if (isset($_GET["action"]) && $_GET["action"] === "registration") { ?>	
-				<form class="admin" method="post" action="<?=BASE_URL;?>warehouse/">
+				<form class="admin" method="post" action="<?=BASE_URL;?>warehouse/registration/">
 					<table>
 						<tr>
 							<th><label for="login">Логин</label></th>
@@ -36,7 +36,7 @@
 							<td><input type="text" name="address" id="address"></td>
 						</tr>
 					</table>
-					<a href="warehause/"><div class="reg">Вход</div></a>	
+					<a href="<?=BASE_URL;?>warehouse/"><div class="reg">Вход</div></a>	
 					<br/>					
 					<input type="submit" value="Регистрация">
 				</form> 
