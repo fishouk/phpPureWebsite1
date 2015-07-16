@@ -23,7 +23,7 @@
 		}
 
 		public function autentification($login, $password){
-			$query = "SELECT * FROM `users` WHERE `username` = '{$login}' AND `password` = '{$pass}' LIMIT 1";
+			$query = "SELECT * FROM `users` WHERE `username` = '{$login}' AND `password` = '{$password}' LIMIT 1";
 			return mysql_fetch_assoc(mysql_query($query));
 		}
 	

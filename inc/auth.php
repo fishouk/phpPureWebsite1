@@ -1,14 +1,14 @@
 <?php 
-
+include('mysql.php');
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+	$login = trim($_POST["login"]);
+	$password = trim(md5($_POST["password"]));
+	
 	if ($login == "" || $password == "") {
 		$error_message[] = "Вы должны заполнить все поля формы!";
-	} else {		
-		$login = trim($_POST["login"]);
-		$password = trim(md5($_POST["password"]));
-	}
+	} 
 				
 	//Реализация защиты от иньекций спам ботами для рассылки писем другим пользователям
 	foreach ($_POST as $value) {

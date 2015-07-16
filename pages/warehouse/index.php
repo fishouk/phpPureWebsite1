@@ -1,7 +1,7 @@
 <?php
 	include('../../inc/config.php');
 	include('../../inc/auth.php');
-	include('../../inc/mysql.php');
+	
 	
 
 	$pageTitle = "Админ-Панель";
