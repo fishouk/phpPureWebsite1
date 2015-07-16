@@ -1,5 +1,6 @@
 <?php
 	include('../../inc/auth.php');
+	include('../../inc/reg.php');
 	include('../../inc/config.php');	
 
 	$pageTitle = "Админ-Панель";
@@ -13,6 +14,16 @@
 			<?php
 			//Если получен соответсвующий Get запрос форма регистрации
 			 if (isset($_GET["action"]) && $_GET["action"] === "registration") { ?>	
+			 	<h1>Регистрация</h1>
+				<?php 
+					if(!isset($error_message)){
+						echo "<p>Добро пожаловать, здесь вы можете зарегистрироваться!</p>";						
+					}else{
+						foreach ($error_message as $err_message) { //вывод массива ошибок при заполнении формы
+							echo '<p class="message">' . $err_message . '</p>';
+						}
+					}
+				?>
 				<form class="admin" method="post" action="<?=BASE_URL;?>warehouse/registration/">
 					<table>
 						<tr>
@@ -29,7 +40,7 @@
 						</tr>		
 						<tr>
 							<th><label for="password2">Повтор пароля</label></th>
-							<td><input type="password2" name="password2" id="password2" value="<?php if(isset($password2)) {echo htmlspecialchars($password2);} ?>"></td>
+							<td><input type="password" name="password2" id="password2" value="<?php if(isset($password2)) {echo htmlspecialchars($password2);} ?>"></td>
 						</tr>						
 						<tr style="display:none;">
 							<th><label for="address">Ваш адрес</label></th>
@@ -62,7 +73,7 @@
 						<tr>
 							<th><label for="password">Пароль</label></th>
 							<td><input type="password" name="password" id="password" value="<?php if(isset($password)) {echo htmlspecialchars($password);} ?>"></td>
-						</tr>						
+						</tr>		
 						<tr style="display:none;">
 							<th><label for="address">Ваш адрес</label></th>
 							<td><input type="text" name="address" id="address"></td>

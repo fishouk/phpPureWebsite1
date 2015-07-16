@@ -4,10 +4,8 @@
 
 		const HOST = 'localhost';
 		const USER = 'root';
-		//const PASS = 'PvhAjklkhg8';
 		const PASS = '';
-		const DB = 'mydiplom';
-		const PREF_T = '';
+		const DB = 'mydiplom';	
 		protected $connect;
 
 		function __construct()
@@ -25,6 +23,12 @@
 		public function autentification($login, $password){
 			$query = "SELECT * FROM `users` WHERE `username` = '{$login}' AND `password` = '{$password}' LIMIT 1";
 			return mysql_fetch_assoc(mysql_query($query));
+		}
+
+		public function registration($login, $email, $pass){
+			$query = "INSERT INTO `users` (`user_id` ,`username` ,`email` , `password`) 
+									VALUES ( NULL ,  '{$login}',  '{$email}',  '{$pass}') LIMIT 1";
+			return mysql_query($query);
 		}
 	
 

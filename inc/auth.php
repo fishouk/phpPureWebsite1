@@ -2,7 +2,7 @@
 include('mysql.php');
 
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] === "POST" && $_GET["action"] !== "registration"){
 	$login = trim($_POST["login"]);
 	$password = trim(md5($_POST["password"]));
 	
@@ -22,7 +22,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 
 	$mysql = new MySQL;
-	$account = $mysql->autentification($login, $password);
+	$account = autentification($login, $password);
+	var_dump($login);
+	var_dump($email);
+	var_dump($pass);
+	var_dump($account);
 	
 
 
