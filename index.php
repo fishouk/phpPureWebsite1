@@ -1,5 +1,7 @@
 <?php
+include_once('router.php');
 include_once('/inc/config.php');
+var_dump($_SESSION);
 
 include(ROOT_URL . 'inc/products.php');
 $rececntProducts = getRecentProducts();

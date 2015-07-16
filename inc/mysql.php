@@ -28,8 +28,10 @@
 		}
 
 		public function registration($login, $email, $pass){
-			$query = "INSERT INTO  `mydiplom`.`users` (`user_id` ,`username` ,`email` , `password`) 
-									VALUES ( NULL ,  '{$login}',  '{$email}',  '{$pass}'); LIMIT 1";
+			$query = sprintf("INSERT INTO `users` (`username` ,`email` , `password`) VALUES ('%s', '%s', '%s')",
+						            mysql_real_escape_string($login),
+						            mysql_real_escape_string($email),
+						            mysql_real_escape_string($pass));
 			return mysql_query($query);
 		}
 	

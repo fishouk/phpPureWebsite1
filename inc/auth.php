@@ -4,7 +4,8 @@ include('mysql.php');
 
 if($_SERVER["REQUEST_METHOD"] === "POST" && $_GET["action"] !== "registration"){
 	$login = trim($_POST["login"]);
-	$password = trim(md5($_POST["password"]));
+	$password = trim($_POST["password"]);
+	$pass = md5($password);
 	
 	if ($login == "" || $password == "") {
 		$error_message[] = "Вы должны заполнить все поля формы!";
@@ -22,12 +23,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && $_GET["action"] !== "registration"){
 	}
 
 	$mysql = new MySQL;
-	$account = $mysql->autentification($login, $password);
-	var_dump($login);
-	var_dump($email);
-	var_dump($pass);
-	var_dump($res);
+	$account = $mysql->autentification($login, $pass);
 	
+	$_SESSION["user"]["login"] = $login;
+	header("Location: ". BASE_URL ."  ");
+
 
 
 }

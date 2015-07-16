@@ -1,7 +1,7 @@
 <?php
 
 
-
+/*var_dump($_POST); var_dump($_GET); exit;*/
 if($_SERVER["REQUEST_METHOD"] === "POST"  && $_GET["action"] == "registration"){
 	$login = trim($_POST["login"]);
 	$email = trim($_POST["email"]);
@@ -27,20 +27,17 @@ if($_SERVER["REQUEST_METHOD"] === "POST"  && $_GET["action"] == "registration"){
 		if (stripos($value, 'Content-Type: ' !== false)) {
 			$error_message[] = "Некорректно введена информация.";				
 		}
-	}	
+	}
 	//Защита от спама
-	if ($_POST['address'] !== ""){
+	if (!empty($_POST['address'])){
 		$error_message[] = "Ошибка при отправке формы!";
 	}
 
 	$mysql = new MySQL;
 	$res = $mysql->registration($login, $email, $pass);
-	var_dump($login);
-	var_dump($email);
-	var_dump($pass);
-	var_dump($res);
-	echo "Спасибо за регистрацию! Теперь можете войти!";
-
-}	
 	
+	$_SESSION["user"]["login"] = $login;
+	header("Location: ". BASE_URL ."  ");
+	
+	}
 ?>
