@@ -1,9 +1,12 @@
 <?php
 include_once('/inc/config.php');
 
+session_start();
+ob_start();
+
 include(ROOT_URL . 'inc/products.php');
 $rececntProducts = getRecentProducts();
-$pageTitle = "Интернет магазин футболок"; 	
+$pageTitle = "Интернет магазин книг и дисков"; 	
 include(ROOT_URL . 'inc/header.php'); ?>
 
 		<div class="section banner">
@@ -12,9 +15,9 @@ include(ROOT_URL . 'inc/header.php'); ?>
 
 				<img class="hero" src="<?=BASE_URL;?>img/stewie.png" alt="Stewie says:">
 				<div class="button">
-					<a href="<?=BASE_URL;?>shirts/">
+					<a href="<?=BASE_URL;?>items/">
 						<h2>А ты купил?</h2>
-						<p>Зацените наши прикольные футболки.</p>
+						<p>Зацените наши крутые книги и диски.</p>
 					</a>
 				</div>
 			</div>

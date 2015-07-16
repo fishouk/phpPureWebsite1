@@ -28,15 +28,14 @@
 
 		<div class="wrapper">
 
-			<h1 class="branding-title"><a href="<?=BASE_URL;?>">Интеренет магазин футболок</a></h1>
+			<h1 class="branding-title"><a href="<?=BASE_URL;?>">Интеренет магазин книг и дисков</a></h1>
 
 			<ul class="nav">
 				<li class="companyInfo <?php if($sectionName == "companyInfo"){echo 'on';}?>"><a href="<?=BASE_URL;?>info/">О компании</a></li>
-				<li class="shirts <?php if($sectionName == "shirts"){echo 'on';}?>"><a href="<?=BASE_URL;?>shirts/">Футболки</a></li>
+				<li class="items <?php if($sectionName == "items"){echo 'on';}?>"><a href="<?=BASE_URL;?>items/">Товары</a></li>				
 				<li class="contact <?php if($sectionName == "contact"){echo 'on';}?>"><a href="<?=BASE_URL;?>contact/">Написать нам</a></li>
 				<li class="search <?php if($sectionName == "search"){echo 'on';}?>"><a href="<?=BASE_URL;?>search/">Поиск</a></li>
-				<li class="cart"><a target="paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_cart&amp;business=Y7NCZV89TFDQ6
-						&amp;display=1">Корзина</a></li>
+				<li class="warehouse <?php if($sectionName == "warehouse"){echo 'on';}?>"><a href="<?=BASE_URL;?>warehouse/">Склад</a></li>
 			</ul>
 
 		</div>

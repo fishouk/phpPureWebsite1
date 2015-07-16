@@ -17,7 +17,7 @@
 				}
 			?>
 			<form method="get" action="<?=BASE_URL . "search/";?>">
-				<input type="text" name="s" value="<?php if(isset($search_term)) {echo htmlspecialchars($search_term);} ?>" placeholder="Часть названия, цвет или ID"
+				<input type="text" name="s" value="<?php if(isset($search_term)) {echo htmlspecialchars($search_term);} ?>" placeholder="Часть названия, цвет или ID">
 				<input type="submit" value="go">
 			</form>		
 			
