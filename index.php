@@ -1,9 +1,6 @@
 <?php
 include_once('/inc/config.php');
 
-session_start();
-ob_start();
-
 include(ROOT_URL . 'inc/products.php');
 $rececntProducts = getRecentProducts();
 $pageTitle = "Интернет магазин книг и дисков"; 	
