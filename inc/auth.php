@@ -22,11 +22,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && $_GET["action"] !== "registration"){
 	}
 
 	$mysql = new MySQL;
-	$account = autentification($login, $password);
+	$account = $mysql->autentification($login, $password);
 	var_dump($login);
 	var_dump($email);
 	var_dump($pass);
-	var_dump($account);
+	var_dump($res);
 	
 
 

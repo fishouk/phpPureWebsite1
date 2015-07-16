@@ -4,8 +4,10 @@
 
 		const HOST = 'localhost';
 		const USER = 'root';
+		//const PASS = 'PvhAjklkhg8';
 		const PASS = '';
-		const DB = 'mydiplom';	
+		const DB = 'mydiplom';
+		const PREF_T = '';
 		protected $connect;
 
 		function __construct()
@@ -26,8 +28,8 @@
 		}
 
 		public function registration($login, $email, $pass){
-			$query = "INSERT INTO `users` (`user_id` ,`username` ,`email` , `password`) 
-									VALUES ( NULL ,  '{$login}',  '{$email}',  '{$pass}') LIMIT 1";
+			$query = "INSERT INTO  `mydiplom`.`users` (`user_id` ,`username` ,`email` , `password`) 
+									VALUES ( NULL ,  '{$login}',  '{$email}',  '{$pass}'); LIMIT 1";
 			return mysql_query($query);
 		}
 	

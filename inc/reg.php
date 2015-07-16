@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"  && $_GET["action"] == "registration"){
 	}
 
 	$mysql = new MySQL;
-	$res = registration($login, $email, $pass);
+	$res = $mysql->registration($login, $email, $pass);
 	var_dump($login);
 	var_dump($email);
 	var_dump($pass);
