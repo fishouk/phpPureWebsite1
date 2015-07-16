@@ -13,6 +13,7 @@ if(isset($_GET["s"])) {
 
 $pageTitle = "Поиск";
 $sectionName = "search";/*Для выделения ссылки в меню при открытии этой страницы*/ 	
+include(ROOT_URL . 'inc/session-check.php');
 ?>
 
 	<div class="section shirts search page">

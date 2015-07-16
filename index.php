@@ -4,7 +4,9 @@ include_once('router.php');
 
 $pageTitle = "Интернет магазин книг и дисков"; 	
 include(ROOT_URL . 'inc/products.php');
-$rececntProducts = getRecentProducts();?>
+$rececntProducts = getRecentProducts();
+include(ROOT_URL . 'inc/session-check.php');
+?>
 
 
 		<div class="section banner">

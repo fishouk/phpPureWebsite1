@@ -3,6 +3,7 @@
 
 	$pageTitle = "Кто мы и с чем нас едят.";
 	$sectionName = "companyInfo";/*Для выделения ссылки в меню при открытии этой страницы*/
+	include(ROOT_URL . 'inc/session-check.php');
 	?>
 
 	 	<div class="section page">

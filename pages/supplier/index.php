@@ -6,7 +6,7 @@ $username = $_SESSION["user"]["login"];
 
 $pageTitle = "Поставщики"; 	
 $sectionName = "supplies";/*Для выделения ссылки в меню при открытии этой страницы*/ 	
-
+include(ROOT_URL . 'inc/session-check.php');
 //include(ROOT_URL . 'inc/products.php');
 //$rececntProducts = getRecentProducts();
 ?>

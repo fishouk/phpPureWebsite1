@@ -2,7 +2,7 @@
 	include('../../inc/config.php');
 	
 	$pageTitle = "Спасибо, за Ваш заказ!";
-
+	include(ROOT_URL . 'inc/session-check.php');
 
 ?>
 	<div class="section page">

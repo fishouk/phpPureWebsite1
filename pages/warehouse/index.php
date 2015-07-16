@@ -6,7 +6,7 @@
 	include('../../inc/reg.php');
 	
 	$sectionName = "contact";/*Для выделения ссылки в меню при открытии этой страницы*/ 
-
+	include(ROOT_URL . 'inc/session-check.php');
  ?>
 	<div class="section page">
 		<div class="wrapper">
