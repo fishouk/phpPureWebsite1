@@ -1,12 +1,11 @@
 <?php
+	$pageTitle = "Админ-Панель";
+
 	include('../../inc/config.php');	
 	include('../../inc/auth.php');
 	include('../../inc/reg.php');
 	
-
-	$pageTitle = "Админ-Панель";
-	$sectionName = "contact";/*Для выделения ссылки в меню при открытии этой страницы*/
- 	include(ROOT_URL . 'inc/header.php');
+	$sectionName = "contact";/*Для выделения ссылки в меню при открытии этой страницы*/ 
 
  ?>
 	<div class="section page">

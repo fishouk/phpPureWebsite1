@@ -56,7 +56,6 @@
 	
 	$pageTitle = "Напишите нам, мы ждем!";
 	$sectionName = "contact";/*Для выделения ссылки в меню при открытии этой страницы*/
- 	include(ROOT_URL . 'inc/header.php');
 
  ?>
 	<div class="section page">

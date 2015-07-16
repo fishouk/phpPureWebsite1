@@ -2,7 +2,6 @@
 	include('../../inc/config.php');
 	
 	$pageTitle = "Спасибо, за Ваш заказ!";
-	include(ROOT_URL . 'inc/header.php'); 
 
 
 ?>

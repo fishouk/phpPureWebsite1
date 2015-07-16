@@ -32,7 +32,7 @@
 <?php
 	$pageTitle = "Крутые товары";
 	$sectionName = "items";/*Для выделения ссылки в меню при открытии этой страницы*/
-	include(ROOT_URL . 'inc/header.php');
+	
 ?>
 
 	

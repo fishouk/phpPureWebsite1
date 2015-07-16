@@ -7,7 +7,6 @@ $product = getProduct($_GET["id"]);
 $pageTitle = $product['name'];
 $sectionName = "items"; /*Для выделения ссылки в меню при открытии этой страницы*/
 
-include(ROOT_URL . 'inc/header.php');
 ?>
 	<div class="section page">
 		<div class="wrapper">

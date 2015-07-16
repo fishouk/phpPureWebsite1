@@ -28,8 +28,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && $_GET["action"] !== "registration"){
 	$_SESSION["user"]["login"] = $login;
 	header("Location: ". BASE_URL ."  ");
 
-
-
 }
 
 ?>

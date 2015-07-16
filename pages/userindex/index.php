@@ -1,11 +1,14 @@
 <?php
-include_once('/inc/config.php');
-include_once('router.php');
+include_once('../../inc/config.php');
 
-$pageTitle = "Интернет магазин книг и дисков"; 	
+$username = $_SESSION["user"]["login"];
+
+
+$pageTitle = "Добро пожаловать, ". $username .""; 	
+ 
 include(ROOT_URL . 'inc/products.php');
-$rececntProducts = getRecentProducts();?>
-
+$rececntProducts = getRecentProducts();
+?>
 
 		<div class="section banner">
 
