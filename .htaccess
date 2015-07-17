@@ -1,11 +1,12 @@
 RewriteEngine On
 RewriteRule ^(\w+)$ $1.php [NC]
 
+RewriteRule ^contact/$ pages/contact/index.php
 RewriteRule ^info/$ pages/info/index.php
 RewriteRule ^reciept/$ pages/reciept/index.php
-RewriteRule ^contact/$ pages/contact/index.php
 RewriteRule ^search/$ pages/search/index.php
-RewriteRule ^info/$ pages/info/index.php
+RewriteRule ^supplier/$ pages/supplier/index.php
+RewriteRule ^user/$ pages/userindex/index.php
 RewriteRule ^warehouse/$ pages/warehouse/index.php
 RewriteRule ^contact/thanks/$ pages/contact/?message=thanks 
 RewriteRule ^warehouse/registration/$ pages/warehouse/?action=registration 
