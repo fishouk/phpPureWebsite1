@@ -51,6 +51,10 @@
 			$query = "DELETE FROM `supplies` WHERE `id`= '{$id}'";
 			return  mysql_query($query);
 		}
+		public function getproducts(){
+			$query = "SELECT `id`, `name`, `author`, `discription`, `full_discription`, `price`, `img`, `id_supplier`, `count`, `id_place` FROM `products`";
+			return  mysql_query($query);
+		}
 
 		function __destruct(){
 			mysql_close($this->connect); // Разрываем соединение с MySQL

@@ -43,5 +43,8 @@ include(ROOT_URL . 'inc/session-check.php');
 
 		</div>
 
-<?php include(ROOT_URL . 'inc/footer.php');?>
+<?php include(ROOT_URL . 'inc/footer.php');
+
+//http://open-server.ru/forum/viewtopic.php?f=1&t=1138
+?>
 	
