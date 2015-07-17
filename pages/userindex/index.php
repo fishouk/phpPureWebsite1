@@ -1,12 +1,9 @@
 <?php
-include_once('../../inc/config.php');
+include('../../inc/products.php');
 
 $username = $_SESSION["user"]["login"];
-
-
 $pageTitle = "Добро пожаловать, ". $username .""; 	
  
-include(ROOT_URL . 'inc/products.php');
 $rececntProducts = getRecentProducts();
 include(ROOT_URL . 'inc/session-check.php');
 ?>

@@ -1,9 +1,8 @@
 <?php
-include_once('/inc/config.php');
+include('inc/products.php');
 include_once('router.php');
 
 $pageTitle = "Интернет магазин книг и дисков"; 	
-include(ROOT_URL . 'inc/products.php');
 $rececntProducts = getRecentProducts();
 include(ROOT_URL . 'inc/session-check.php');
 ?>

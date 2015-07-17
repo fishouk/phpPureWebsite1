@@ -34,7 +34,23 @@
 						            mysql_real_escape_string($pass));
 			return mysql_query($query);
 		}
-	
+		
+		public function addsupplier($name, $agent, $phone, $address) {
+			$query = sprintf("INSERT INTO `supplies` (`name`, `agent` , `phone`, `address`) VALUES ('%s', '%s', '%s', '%s')",
+						            mysql_real_escape_string($name),
+						            mysql_real_escape_string($agent),
+						            mysql_real_escape_string($phone),
+						            mysql_real_escape_string($address));
+			return mysql_query($query);
+		}
+		public function getsupplier(){
+			$query = "SELECT `id`, `name`, `agent`, `phone`, `address` FROM `supplies`";
+			return  mysql_query($query);
+		}
+		public function delsupplier($id){
+			$query = "DELETE FROM `supplies` WHERE `id`= '{$id}'";
+			return  mysql_query($query);
+		}
 
 		function __destruct(){
 			mysql_close($this->connect); // Разрываем соединение с MySQL
