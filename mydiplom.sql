@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 17 2015 г., 15:49
+-- Время создания: Июл 19 2015 г., 23:47
 -- Версия сервера: 5.5.41-log
 -- Версия PHP: 5.3.29
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   KEY `id_supplier_3` (`id_supplier`),
   KEY `id_place_2` (`id_place`),
   KEY `id_supplier_6` (`id_supplier`,`id_place`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=115 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Дамп данных таблицы `products`
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `supplies` (
   `phone` varchar(15) NOT NULL,
   `address` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `supplies`
@@ -124,7 +124,10 @@ CREATE TABLE IF NOT EXISTS `supplies` (
 
 INSERT INTO `supplies` (`id`, `name`, `agent`, `phone`, `address`) VALUES
 (1, 'Рога и копыта', 'Влад', '888-88-88', 'Где-то далеко, в области'),
-(2, 'Мега диски', 'Боб', '111-11-11', 'Москоу сити');
+(2, 'Мега диски', 'Боб', '111-11-11', 'Москоу сити'),
+(3, 'тестовая', 'можно', 'проверить', 'удаление'),
+(4, 'еще раз', 'можно ', 'проверить', 'удаление'),
+(5, 'или', 'можно', 'проверить', 'добавление');
 
 -- --------------------------------------------------------
 
@@ -156,8 +159,8 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
 -- Ограничения внешнего ключа таблицы `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`id_place`) REFERENCES `id_place` (`id_place`),
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `supplies` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `supplies` (`id`),
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`id_place`) REFERENCES `id_place` (`id_place`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

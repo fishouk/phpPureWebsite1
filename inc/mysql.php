@@ -1,17 +1,22 @@
 <?php 
 	class MySQL
 	{
+		/*const HOST = 'mysql.grezzzle.myjino.ru';
+		const USER = '046321090_diplom';		
+		const PASS = 'qwerty332233';
+		const DB = 'grezzzle_diplom';*/
 
 		const HOST = 'localhost';
-		const USER = 'root';
-		//const PASS = 'PvhAjklkhg8';
+		const USER = 'root';		
 		const PASS = '';
 		const DB = 'mydiplom';
+		
 		const PREF_T = '';
 		protected $connect;
 
 		function __construct()
 		{
+			
 			$this->connect = @mysql_connect(self::HOST, self::USER, self::PASS); // Пытаемся соединиться с основным MySQL
 			if (!$this->connect) { // Пытаемся соединиться с локальным MySQL
 				$this->connect = @mysql_connect('localhost','root','') or die('Ошибка соединения с MySQL');

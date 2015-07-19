@@ -55,5 +55,15 @@
 		</div>
 
 	</div>
+			<?php if (isset($_SESSION["user"]["login"]) && !empty($_SESSION["user"]["login"])) { ?>
+				<div class="header"><div class="wrapper">
+					<ul class="nav second_nav">
+						<li class=" <?php if($sectionName == "in_shop"){echo 'on';}?>"><a href="<?=BASE_URL;?>filter/in_shop/">В магазине</a></li>
+						<li class=" <?php if($sectionName == "in_warehouse"){echo 'on';}?>"><a href="<?=BASE_URL;?>filter/whouse/">На складе</a></li>
+						<li class=" <?php if($sectionName == "missing_items"){echo 'on';}?>"><a href="<?=BASE_URL;?>filter/missing/">Отсутствующие товары</a></li>				
+						<li class=" <?php if($sectionName == "avaible_items"){echo 'on';}?>"><a href="<?=BASE_URL;?>filter/avaible/">В наличии</a></li>
+					</ul>
+				</div></div>
+			<?php } //Второе меню дополнительное ?>
 
 	<div id="content">

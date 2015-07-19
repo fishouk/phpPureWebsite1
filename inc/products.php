@@ -2,7 +2,7 @@
 	include_once("config.php");
 	include_once("mysql.php");
 
-	//Функция для отображения футболки по ID и массиву
+	//Функция для отображения товаров по ID и массиву
 	function getViewProductList($product) {
 		$output = "";
 		
@@ -16,7 +16,7 @@
 		return $output; 
 	}
 
-	//функция для записи последних 4 футболок в массив
+	//функция для записи последних 4 товаров в массив
 	function getRecentProducts() {
 		$recent = array();
 		$all = getAllProducts();
@@ -32,7 +32,7 @@
 		return $recent;
 	}
 
-	//функция поиска нужной футболки
+	//функция поиска нужной товаров
 	function getProductsSearch($s){
 		mb_internal_encoding("UTF-8");
 		$results = array();
@@ -47,7 +47,7 @@
 		return $results;
 	}
 
-	//функция возвращает 8 футболок
+	//функция возвращает 8 товаров
 	function getSubsetProducts($start,$end){
 		$subset = array();
 		$all = getAllProducts();
@@ -63,7 +63,7 @@
 		return $subset;
 	}
 
-	//функция для определения футболки и ее вывода на новую страницу
+	//функция для определения товаров и ее вывода на новую страницу
 	function getProduct($productID) {
 		$products = getAllProducts();
 		if(isset($productID)) {
@@ -86,7 +86,7 @@
 	function getAllProducts() {
 		$mysql = new MySQL;
 		$product = $mysql->getproducts();
-		// массив футболок
+		// массив товаров
 		$products = array();
 		$i=101;		
 		while($el_product = mysql_fetch_assoc($product)) {
@@ -96,7 +96,10 @@
 				"discription" => $el_product['discription'],
 				"fullDiscription" => $el_product['full_discription'],
 				"price" => $el_product['price'],
-				"img" => $el_product['img']		
+				"img" => $el_product['img'],
+				"id_supplier" => $el_product['id_supplier'],
+				"count" => $el_product['count'],
+				"id_place" => $el_product['id_place'] 	
 			);
 			$i++;
 		}
@@ -105,6 +108,194 @@
 			$products[$product_id]["sku"] = $product_id;
 		}
 		return $products;
+	}
+	
+	/*Подсчет и вывод товаров в магазине*/
+	function getInShopProducts() {
+		$mysql = new MySQL;
+		$product = $mysql->getproducts();
+		// массив товаров
+		$products = array();
+		$i=101;		
+		while($el_product = mysql_fetch_assoc($product)) {
+			if($el_product['id_place'] == 2){
+				$products[$i] = array(
+					"name" => $el_product['name'],
+					"author" => $el_product['author'],
+					"discription" => $el_product['discription'],
+					"fullDiscription" => $el_product['full_discription'],
+					"price" => $el_product['price'],
+					"img" => $el_product['img'],
+					"id_supplier" => $el_product['id_supplier'],
+					"count" => $el_product['count'],
+					"id_place" => $el_product['id_place'] 
+				);
+			}
+			$i++;
+		}
+
+		foreach ($products as $product_id => $product) {
+			$products[$product_id]["sku"] = $product_id;
+		}
+		return $products;
+	}
+	function getSubsetProductsInShop($start,$end){
+		$subset = array();
+		$all = getInShopProducts();
+
+		$position = 0;
+		foreach ($all as $product) {
+			$position += 1;
+			if ($position >= $start && $position <=$end) {
+				$subset[] = $product;
+			}
+		}
+
+		return $subset;
+	}
+	function getProductsInShopCount() {
+		return count(getInShopProducts());		
+	}
+
+	/*Подсчет и вывод товаров на складе*/
+	function getInWhoseProducts() {
+		$mysql = new MySQL;
+		$product = $mysql->getproducts();
+		// массив товаров
+		$products = array();
+		$i=101;		
+		while($el_product = mysql_fetch_assoc($product)) {
+			if($el_product['id_place'] == 1){
+				$products[$i] = array(
+					"name" => $el_product['name'],
+					"author" => $el_product['author'],
+					"discription" => $el_product['discription'],
+					"fullDiscription" => $el_product['full_discription'],
+					"price" => $el_product['price'],
+					"img" => $el_product['img'],
+					"id_supplier" => $el_product['id_supplier'],
+					"count" => $el_product['count'],
+					"id_place" => $el_product['id_place'] 
+				);
+			}
+			$i++;
+		}
+
+		foreach ($products as $product_id => $product) {
+			$products[$product_id]["sku"] = $product_id;
+		}
+		return $products;
+	}
+	function getSubsetProductsInWhose($start,$end){
+		$subset = array();
+		$all = getInWhoseProducts();
+
+		$position = 0;
+		foreach ($all as $product) {
+			$position += 1;
+			if ($position >= $start && $position <=$end) {
+				$subset[] = $product;
+			}
+		}
+
+		return $subset;
+	}
+	function getProductsInWhoseCount() {
+		return count(getInWhoseProducts());		
+	}
+
+	/*Подсчет и вывод товаров которых нет*/
+	function getMissingProducts() {
+		$mysql = new MySQL;
+		$product = $mysql->getproducts();
+		// массив товаров
+		$products = array();
+		$i=101;		
+		while($el_product = mysql_fetch_assoc($product)) {
+			if($el_product['count'] == 0){
+				$products[$i] = array(
+					"name" => $el_product['name'],
+					"author" => $el_product['author'],
+					"discription" => $el_product['discription'],
+					"fullDiscription" => $el_product['full_discription'],
+					"price" => $el_product['price'],
+					"img" => $el_product['img'],
+					"id_supplier" => $el_product['id_supplier'],
+					"count" => $el_product['count'],
+					"id_place" => $el_product['id_place'] 
+				);
+			}
+			$i++;
+		}
+
+		foreach ($products as $product_id => $product) {
+			$products[$product_id]["sku"] = $product_id;
+		}
+		return $products;
+	}
+	function getSubsetProductsMissing($start,$end){
+		$subset = array();
+		$all = getMissingProducts();
+
+		$position = 0;
+		foreach ($all as $product) {
+			$position += 1;
+			if ($position >= $start && $position <=$end) {
+				$subset[] = $product;
+			}
+		}
+
+		return $subset;
+	}
+	function getProductsMissingCount() {
+		return count(getMissingProducts());		
+	}
+
+	/*Подсчет и вывод товаров которые есть в наличии*/
+	function getAvaibleProducts() {
+		$mysql = new MySQL;
+		$product = $mysql->getproducts();
+		// массив товаров
+		$products = array();
+		$i=101;		
+		while($el_product = mysql_fetch_assoc($product)) {
+			if($el_product['count'] > 0){
+				$products[$i] = array(
+					"name" => $el_product['name'],
+					"author" => $el_product['author'],
+					"discription" => $el_product['discription'],
+					"fullDiscription" => $el_product['full_discription'],
+					"price" => $el_product['price'],
+					"img" => $el_product['img'],
+					"id_supplier" => $el_product['id_supplier'],
+					"count" => $el_product['count'],
+					"id_place" => $el_product['id_place'] 
+				);
+			}
+			$i++;
+		}
+
+		foreach ($products as $product_id => $product) {
+			$products[$product_id]["sku"] = $product_id;
+		}
+		return $products;
+	}
+	function getSubsetProductsAvaible($start,$end){
+		$subset = array();
+		$all = getAvaibleProducts();
+
+		$position = 0;
+		foreach ($all as $product) {
+			$position += 1;
+			if ($position >= $start && $position <=$end) {
+				$subset[] = $product;
+			}
+		}
+
+		return $subset;
+	}
+	function getProductsAvaibleCount() {
+		return count(getAvaibleProducts());		
 	}
 
 
