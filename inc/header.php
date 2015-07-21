@@ -32,7 +32,8 @@
 
 			<ul class="nav">
 				<li class="companyInfo <?php if($sectionName == "companyInfo"){echo 'on';}?>"><a href="<?=BASE_URL;?>info/">О компании</a></li>
-				<li class="items <?php if($sectionName == "items"){echo 'on';}?>"><a href="<?=BASE_URL;?>items/">Товары</a></li>				
+				<li class="items <?php if($sectionName == "items"){echo 'on';}?>"><a href="<?=BASE_URL;?>items/">Товары</a></li>
+				<li class="items <?php if($sectionName == "basket"){echo 'on';}?>"><a href="<?=BASE_URL;?>basket/">Корзина</a></li>				
 				<li class="contact <?php if($sectionName == "contact"){echo 'on';}?>"><a href="<?=BASE_URL;?>contact/">Написать нам</a></li>
 				<li class="search <?php if($sectionName == "search"){echo 'on';}?>"><a href="<?=BASE_URL;?>search/">Поиск</a></li>
 				<li class="warehouse <?php if($sectionName == "warehouse"){echo 'on';}?>"><a href="<?=BASE_URL;?>warehouse/">Склад</a></li>

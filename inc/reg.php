@@ -1,5 +1,5 @@
 <?php
-
+include('mysql.php');
 
 /*var_dump($_POST); var_dump($_GET); exit;*/
 if($_SERVER["REQUEST_METHOD"] === "POST"  && $_GET["action"] == "registration"){
@@ -34,10 +34,15 @@ if($_SERVER["REQUEST_METHOD"] === "POST"  && $_GET["action"] == "registration"){
 	}
 
 	$mysql = new MySQL;
-	$res = $mysql->registration($login, $email, $pass);
+	$reg = $mysql->registration($login, $email, $pass);
+	$account = $mysql->autentification($login, $pass);
 	
-	$_SESSION["user"]["login"] = $login;
-	header("Location: ". BASE_URL ."  ");
+	if ($account){
+		foreach ($account as $key => $val) { 
+			$_SESSION["user"][$key] = $val;			
+		}
+	}
+	header("Location: ". BASE_URL ."");	
 	
 	}
 ?>

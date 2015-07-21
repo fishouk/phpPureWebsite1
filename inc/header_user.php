@@ -7,6 +7,7 @@
 		session_destroy();
 		header('Location: /');
 	}
+	$username=$_SESSION["user"]["username"];
 ?>
 <!Doctype html>
 <html lang="ru">
@@ -43,10 +44,10 @@
 			
 			<h1 class="branding-title"><a href="<?=BASE_URL;?>">Интеренет магазин книг и дисков</a></h1>
 
-			<ul class="nav">
-				<li class="companyInfo <?php if($sectionName == "companyInfo"){echo 'on';}?>"><a href="<?=BASE_URL;?>info/">О компании</a></li>
+			<ul class="nav">				
 				<li class="supplier <?php if($sectionName == "supplier"){echo 'on';}?>"><a href="<?=BASE_URL;?>supplier/">Поставщики</a></li>
-				<li class="items <?php if($sectionName == "items"){echo 'on';}?>"><a href="<?=BASE_URL;?>items/">Товары</a></li>				
+				<li class="items <?php if($sectionName == "items"){echo 'on';}?>"><a href="<?=BASE_URL;?>items/">Товары</a></li>	
+				<li class="items <?php if($sectionName == "basket"){echo 'on';}?>"><a href="<?=BASE_URL;?>basket/">Корзина</a></li>				
 				<li class="contact <?php if($sectionName == "contact"){echo 'on';}?>"><a href="<?=BASE_URL;?>contact/">Написать нам</a></li>
 				<li class="search <?php if($sectionName == "search"){echo 'on';}?>"><a href="<?=BASE_URL;?>search/">Поиск</a></li>
 				<li class="exit"><a href="<?=BASE_URL;?>user/?exit=yes">Выход</a></li>
@@ -55,7 +56,7 @@
 		</div>
 
 	</div>
-			<?php if (isset($_SESSION["user"]["login"]) && !empty($_SESSION["user"]["login"])) { ?>
+			<?php if (isset($_SESSION["user"]["username"]) && !empty($_SESSION["user"]["username"])) { ?>
 				<div class="header"><div class="wrapper">
 					<ul class="nav second_nav">
 						<li class=" <?php if($sectionName == "in_shop"){echo 'on';}?>"><a href="<?=BASE_URL;?>filter/in_shop/">В магазине</a></li>

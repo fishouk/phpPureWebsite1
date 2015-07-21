@@ -8,6 +8,7 @@ RewriteRule ^search/$ pages/search/index.php
 RewriteRule ^supplier/$ pages/supplier/index.php
 RewriteRule ^user/$ pages/userindex/index.php
 RewriteRule ^warehouse/$ pages/warehouse/index.php
+RewriteRule ^basket/$ pages/chip_basket/index.php
 RewriteRule ^filter/in_shop/$ pages/items_in_shop/index.php
 RewriteRule ^filter/whouse/$ pages/items_whouse/index.php
 RewriteRule ^filter/missing/$ pages/items_missing/index.php

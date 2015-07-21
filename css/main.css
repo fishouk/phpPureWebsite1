@@ -1,4 +1,4 @@
-/*! normalize.css - http://github.com/necolas/normalize.css */
+supllies/*! normalize.css - http://github.com/necolas/normalize.css */
 
 /* ==========================================================================
    HTML5 display definitions
@@ -779,7 +779,7 @@ form input[type="submit"], .reg {
 .supllies td{border:  1px solid #CCC;background: #f4f3f2; padding: 7px 0;}
 .supllies a, .supllies a:visited{text-decoration: none; color:#ff8400;}
 .supllies a:hover{color:#9c9f4e;}
-
+.supllies img{width: 75px; height: 75px;}
 
 .breadcrumb {
     font-family: Helvetica, Arial, sans-serif;

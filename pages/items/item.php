@@ -1,7 +1,8 @@
 <?php 
 include('../../inc/config.php');
-
 include(ROOT_URL . 'inc/products.php');
+include(ROOT_URL . 'inc/basket_update.php');
+
 
 $product = getProduct($_GET["id"]);
 $pageTitle = $product['name'];
@@ -21,7 +22,7 @@ include(ROOT_URL . 'inc/session-check.php');
 				<h1><span class="price"><?php echo $product['price']; ?> р</span><?php echo $product['name']; ?></h1>
 				<p><?php echo $product['fullDiscription']; ?></p>
 				<!-- Кнопка оплаты PayPall -->
-				<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<form action="" method="post">
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="<?php echo $product["payPall"]; ?>">
 					<input type="hidden" name="item_name" value="<?php echo $product["name"]; ?>">

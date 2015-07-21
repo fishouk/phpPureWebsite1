@@ -39,7 +39,26 @@
 						            mysql_real_escape_string($pass));
 			return mysql_query($query);
 		}
-		
+		public function add_to_basket($add_product){
+			$id_user = (int)$add_product["id_user"];
+			$id_product = (int)$add_product["products"]-100;
+			$count = (int)$add_product["count"];
+			mysql_query ("INSERT INTO `chip_basket` (`id_user` ,`id_product` , `count`)
+			 VALUES ('".$id_user."', '".$id_product."', '".$count."')") or die(mysql_error() . "ошибка на ". __LINE__);
+		}
+		public function get_from_basket($id_user){
+			$query = "SELECT * FROM `chip_basket` WHERE `id_user` = '{$id_user}'";
+			return mysql_query($query);
+		}
+		public function info_product_basket($id_product){
+			$query = "SELECT * FROM `products` WHERE `id` = '{$id_product}'";
+			return mysql_query($query);
+		}
+		public function del_item_from_bascet($item_for_del){
+			$query = "DELETE FROM `chip_basket` WHERE `id_basket`= '{$item_for_del}'";
+			return  mysql_query($query);
+		}
+
 		public function addsupplier($name, $agent, $phone, $address) {
 			$query = sprintf("INSERT INTO `supplies` (`name`, `agent` , `phone`, `address`) VALUES ('%s', '%s', '%s', '%s')",
 						            mysql_real_escape_string($name),

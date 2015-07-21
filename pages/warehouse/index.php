@@ -2,8 +2,8 @@
 	$pageTitle = "Админ-Панель";
 
 	include('../../inc/config.php');	
-	include('../../inc/auth.php');
 	include('../../inc/reg.php');
+	include('../../inc/auth.php');
 	
 	$sectionName = "contact";/*Для выделения ссылки в меню при открытии этой страницы*/ 
 	include(ROOT_URL . 'inc/session-check.php');

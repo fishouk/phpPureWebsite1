@@ -62,7 +62,7 @@
 						</table>
 						<input type="submit" value="Добавить">
 					</form>';
-
+			
 
 
 ?>
