@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 19 2015 г., 23:47
+-- Время создания: Июл 22 2015 г., 16:25
 -- Версия сервера: 5.5.41-log
 -- Версия PHP: 5.3.29
 
@@ -19,6 +19,35 @@ SET time_zone = "+00:00";
 --
 -- База данных: `mydiplom`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `chip_basket`
+--
+
+CREATE TABLE IF NOT EXISTS `chip_basket` (
+  `id_basket` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `count` int(11) NOT NULL,
+  PRIMARY KEY (`id_basket`),
+  KEY `id_product` (`id_product`),
+  KEY `id_user` (`id_user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+
+--
+-- Дамп данных таблицы `chip_basket`
+--
+
+INSERT INTO `chip_basket` (`id_basket`, `id_user`, `id_product`, `count`) VALUES
+(3, 1, 2, 4),
+(4, 1, 20, 20),
+(20, 1, 6, 3),
+(21, 23, 27, 4),
+(22, 23, 25, 2),
+(23, 23, 10, 1),
+(24, 23, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -116,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `supplies` (
   `phone` varchar(15) NOT NULL,
   `address` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `supplies`
@@ -124,10 +153,7 @@ CREATE TABLE IF NOT EXISTS `supplies` (
 
 INSERT INTO `supplies` (`id`, `name`, `agent`, `phone`, `address`) VALUES
 (1, 'Рога и копыта', 'Влад', '888-88-88', 'Где-то далеко, в области'),
-(2, 'Мега диски', 'Боб', '111-11-11', 'Москоу сити'),
-(3, 'тестовая', 'можно', 'проверить', 'удаление'),
-(4, 'еще раз', 'можно ', 'проверить', 'удаление'),
-(5, 'или', 'можно', 'проверить', 'добавление');
+(2, 'Мега диски', 'Боб', '111-11-11', 'Москоу сити');
 
 -- --------------------------------------------------------
 
@@ -142,18 +168,29 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(1, 'Alex', 'Alex@alex.ru', '534b44a19bf18d20b71ecc4eb77c572f');
+(1, 'Alex', 'Alex@alex.ru', '534b44a19bf18d20b71ecc4eb77c572f'),
+(4, 'vlad', 'vlad@vlad', 'd701fde59d74f76803087b6632186caf'),
+(21, 'peter', 'peter@peter', '51dc30ddc473d43a6011e9ebba6ca770'),
+(22, 'vladslat', 'peter@peter', '51dc30ddc473d43a6011e9ebba6ca770'),
+(23, 'qwe', 'qwe@qwe', '76d80224611fc919a5d54f0ff9fba446');
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
+
+--
+-- Ограничения внешнего ключа таблицы `chip_basket`
+--
+ALTER TABLE `chip_basket`
+  ADD CONSTRAINT `chip_basket_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `chip_basket_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `products`
